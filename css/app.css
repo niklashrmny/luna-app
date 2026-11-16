@@ -289,3 +289,9 @@ body:has(.timer:not([hidden])) .view { padding-bottom: calc(var(--safe-bottom) +
 .ex-anim img:last-child { animation: ex-swap 2.4s ease-in-out infinite; }
 @keyframes ex-swap { 0%, 35% { opacity: 0; } 50%, 85% { opacity: 1; } 100% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .ex-anim img:last-child { animation-duration: 6s; } }
+
+/* Progress */
+.hint-card { border-color: var(--pink); }
+.strength-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.strength-row:last-child { border-bottom: 0; }
+label.btn { display: inline-flex; }

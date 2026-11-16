@@ -1,6 +1,6 @@
 // Offline support: app files are cached on install, fonts on first use.
 // Bump VERSION whenever app files change so phones pick up the update.
-const VERSION = 'luna-v4';
+const VERSION = 'luna-v5';
 const APP_FILES = [
   './',
   'index.html',
@@ -19,6 +19,7 @@ const APP_FILES = [
   'js/scanner.js',
   'js/views/food.js',
   'js/images.js',
+  'js/views/progress.js',
   'img/ex/Barbell_Glute_Bridge-0.jpg',
   'img/ex/Barbell_Glute_Bridge-1.jpg',
   'img/ex/Barbell_Hip_Thrust-0.jpg',

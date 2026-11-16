@@ -5,17 +5,14 @@ import * as home from './views/home.js';
 import * as onboarding from './views/onboarding.js';
 import * as training from './views/training.js';
 import * as food from './views/food.js';
+import * as progress from './views/progress.js';
 
 // Hash routes: #heute, #training?day=tag2, #essen, #fortschritt, #profil
-const soon = (title, text) => (root) => {
-  root.innerHTML = `<div class="placeholder"><h1>${title}</h1><p class="muted">${text}</p></div>`;
-};
-
 const routes = {
   heute: { render: home.render, tab: true },
   training: { render: training.render, tab: true },
   essen: { render: food.render, tab: true },
-  fortschritt: { render: soon('Fortschritt', 'Gewichtstrend, Kraftkurven und Wochen-Check-in kommen in Etappe 4.'), tab: true },
+  fortschritt: { render: progress.render, tab: true },
   profil: { render: onboarding.render, tab: false },
 };
 

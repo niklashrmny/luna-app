@@ -7,7 +7,10 @@ const empty = () => ({
   workouts: [],       // { id, dayId, date, sets: { [exerciseId]: [{ kg, reps }] } }
   food: [],           // { id, date, time, name, kcal, protein, fat }
   weights: [],        // { date, kg }
-  customFoods: [],    // own dishes, filled in stage 3
+  customFoods: [],    // own dishes and scanned products
+  measures: [],       // { date, taille, huefte, oberschenkel, arm } in cm
+  checkins: [],       // accepted calorie corrections { date, delta }
+  lastBackup: null,   // ISO date of the last exported backup
 });
 
 let data = load();
@@ -29,6 +32,14 @@ export const store = {
   get: () => data,
   update(fn) {
     fn(data);
+    save();
+  },
+  // Restore from a backup file. Throws if it doesn't look like ours.
+  replace(next) {
+    if (!next || typeof next !== 'object' || !Array.isArray(next.workouts) || !Array.isArray(next.food)) {
+      throw new Error('Das ist keine Backup-Datei dieser App.');
+    }
+    data = { ...empty(), ...next, active: null };
     save();
   },
   reset() {
