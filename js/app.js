@@ -4,6 +4,7 @@ import { resumeTimer } from './timer.js';
 import * as home from './views/home.js';
 import * as onboarding from './views/onboarding.js';
 import * as training from './views/training.js';
+import * as food from './views/food.js';
 
 // Hash routes: #heute, #training?day=tag2, #essen, #fortschritt, #profil
 const soon = (title, text) => (root) => {
@@ -13,7 +14,7 @@ const soon = (title, text) => (root) => {
 const routes = {
   heute: { render: home.render, tab: true },
   training: { render: training.render, tab: true },
-  essen: { render: soon('Essen', 'Eingabe per Sprache und Text, Lebensmittel-Tabelle und Barcode-Scan kommen in Etappe 3.'), tab: true },
+  essen: { render: food.render, tab: true },
   fortschritt: { render: soon('Fortschritt', 'Gewichtstrend, Kraftkurven und Wochen-Check-in kommen in Etappe 4.'), tab: true },
   profil: { render: onboarding.render, tab: false },
 };

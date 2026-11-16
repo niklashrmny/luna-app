@@ -250,3 +250,35 @@ a { color: var(--pink); }
 
 .summary-num { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--pink); }
 body:has(.timer:not([hidden])) .view { padding-bottom: calc(var(--safe-bottom) + 190px); }
+
+/* Food */
+.bar { height: 10px; border-radius: 6px; background: var(--track); overflow: hidden; }
+.bar > div { height: 100%; border-radius: 6px; }
+.textarea { height: auto; min-height: 76px; padding: 12px 14px; resize: none; line-height: 1.4; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.pv-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.pv-row:last-of-type { border-bottom: 0; }
+.pv-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.pv-row.unknown .pv-main p:first-child { color: var(--pink-soft); }
+.pv-total { padding-top: 4px; }
+.stepper { display: flex; gap: 6px; }
+.stepper .btn { width: 44px; min-height: 44px; padding: 0; font-size: 22px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { min-height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid var(--line-strong); background: var(--surface); font-size: 14px; font-weight: 600; }
+.chip span { color: var(--muted); font-weight: 500; margin-left: 4px; }
+.entry { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.entry:last-child { border-bottom: 0; }
+.btn-x { width: 44px; height: 44px; flex-shrink: 0; border: 0; background: none; color: var(--muted); font-size: 24px; }
+.btn.listening { border-color: var(--pink); color: var(--pink); }
+.btn[disabled] { opacity: 0.4; }
+.header .btn-icon { min-height: 44px; width: 44px; border: 0; }
+
+/* Bottom sheet (scanner) */
+.sheet { position: fixed; inset: 0; z-index: 20; background: rgba(0, 0, 0, 0.7); display: flex; align-items: flex-end; }
+.sheet-inner { width: 100%; max-width: 520px; margin: 0 auto; max-height: 92dvh; overflow-y: auto; background: var(--bg); border-radius: 24px 24px 0 0; border-top: 1px solid var(--line); padding: 20px 20px calc(var(--safe-bottom) + 24px); display: flex; flex-direction: column; gap: 14px; }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.sheet-head h2 { font-size: 22px; }
+.sheet-head .btn { min-height: 44px; font-size: 14px; }
+.scan-box { position: relative; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: #000; }
+.scan-box video { width: 100%; height: 100%; object-fit: cover; }
+.scan-line { position: absolute; left: 12%; right: 12%; top: 50%; height: 2px; background: var(--pink); box-shadow: 0 0 12px var(--pink); }

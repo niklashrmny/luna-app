@@ -84,8 +84,8 @@ export function render(root, ctx) {
     </section>
 
     <section class="row">
-      <button type="button" class="btn btn-tile" data-go="essen">${icon('mic')} Essen sagen</button>
-      <button type="button" class="btn btn-tile" data-go="essen">${icon('scan')} Scannen</button>
+      <button type="button" class="btn btn-tile" data-food="mic">${icon('mic')} Essen sagen</button>
+      <button type="button" class="btn btn-tile" data-food="scan">${icon('scan')} Scannen</button>
     </section>
 
     <button type="button" class="btn-link small" data-go="profil" style="align-self:center">Körperdaten & Ziel ändern</button>
@@ -93,5 +93,6 @@ export function render(root, ctx) {
 
   root.querySelectorAll('[data-go]').forEach((b) => b.addEventListener('click', () => ctx.go(b.dataset.go)));
   root.querySelectorAll('[data-start]').forEach((b) => b.addEventListener('click', () => ctx.go('training', { start: b.dataset.start })));
+  root.querySelectorAll('[data-food]').forEach((b) => b.addEventListener('click', () => ctx.go('essen', { [b.dataset.food]: 1 })));
   root.querySelector('[data-resume]')?.addEventListener('click', () => ctx.go('training'));
 }

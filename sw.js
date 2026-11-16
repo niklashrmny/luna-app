@@ -1,6 +1,6 @@
 // Offline support: app files are cached on install, fonts on first use.
 // Bump VERSION whenever app files change so phones pick up the update.
-const VERSION = 'luna-v2';
+const VERSION = 'luna-v3';
 const APP_FILES = [
   './',
   'index.html',
@@ -15,6 +15,9 @@ const APP_FILES = [
   'js/views/onboarding.js',
   'js/views/training.js',
   'js/timer.js',
+  'js/foods.js',
+  'js/scanner.js',
+  'js/views/food.js',
   'icons/icon.svg',
   'icons/icon-192.png',
   'icons/icon-512.png',
@@ -37,8 +40,8 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET') return;
 
-  // Google Fonts: cache on first use so they work offline afterwards.
-  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
+  // Google Fonts and the barcode library: cache on first use so they work offline afterwards.
+  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com' || url.hostname === 'cdn.jsdelivr.net') {
     e.respondWith(
       caches.open(VERSION + '-fonts').then(async (c) => {
         const hit = await c.match(e.request);
