@@ -2,6 +2,18 @@ import { store } from '../store.js';
 import { EXERCISES, ALTERNATIVES, DAYS, HOME_DAY, BANDS, dayById, nextDay, lastSets, suggest } from '../plan.js';
 import { esc, icon, todayISO, kg as fmtKg } from '../ui.js';
 import { startRest, stopRest } from '../timer.js';
+import { imagePaths } from '../images.js';
+
+// Start and end position, cross-fading like a slow GIF.
+function exAnim(id) {
+  const imgs = imagePaths(id);
+  if (!imgs) return '';
+  const name = EXERCISES[id].name;
+  return `<figure class="ex-anim" role="img" aria-label="Ausführung ${esc(name)}: Start- und Endposition im Wechsel">
+    <img src="${imgs[0]}" alt="" loading="eager" decoding="async">
+    <img src="${imgs[1]}" alt="" loading="eager" decoding="async">
+  </figure>`;
+}
 
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 const toNum = (v) => {
@@ -182,6 +194,8 @@ function workout(root, ctx) {
       <h1 style="font-size:28px;line-height:1.15">${esc(e.name)} ${e.isNew && !last ? '<span class="badge">neu</span>' : ''}</h1>
       <p class="muted small">${e.sets} Sätze · ${repLabel(e)} · Pause ${String(Math.round(e.rest / 60 * 10) / 10).replace(".", ",")} Min.</p>
     </header>
+
+    ${exAnim(id)}
 
     <div class="row">
       <button type="button" class="btn" style="flex:1;min-height:44px;font-size:14px" data-panel="info" aria-pressed="${a.panel === 'info'}">Anleitung</button>

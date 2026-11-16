@@ -282,3 +282,10 @@ body:has(.timer:not([hidden])) .view { padding-bottom: calc(var(--safe-bottom) +
 .scan-box { position: relative; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: #000; }
 .scan-box video { width: 100%; height: 100%; object-fit: cover; }
 .scan-line { position: absolute; left: 12%; right: 12%; top: 50%; height: 2px; background: var(--pink); box-shadow: 0 0 12px var(--pink); }
+
+/* Exercise animation: two photos cross-fading */
+.ex-anim { position: relative; margin: 0; aspect-ratio: 3 / 2; max-height: 240px; border-radius: var(--radius); overflow: hidden; background: #fff; }
+.ex-anim img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.ex-anim img:last-child { animation: ex-swap 2.4s ease-in-out infinite; }
+@keyframes ex-swap { 0%, 35% { opacity: 0; } 50%, 85% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ex-anim img:last-child { animation-duration: 6s; } }
